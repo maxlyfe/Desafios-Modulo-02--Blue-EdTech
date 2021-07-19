@@ -1,30 +1,56 @@
 <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device=width, initial-scale=1.0" />
+        <title>Desafio das emoções</title>
+        <link rel="stylesheet" href="./Assests/CSS/style.css" />
+        
+    </head>
+    <body>
+        <nav id="banner">
+        
+        </nav>
 
-<html lang='pt-br'>
-    <head> <!-- Inicio da 'HEAD'-->
-        <meta charset="UTF-8" /> <!--Informando o tipo teclado que sera utilziado-->
-        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-        <title>Projeto 01 - Modulo 02 - Jogo do Humor</title> <!--Titulo da aba-->
-        <link rel="stylesheet" href="./assets/CSS/Style.css"> <!--Importanto o CSS-->
-    </head> <!--Fim da "HEAD"-->
-    <!----------------------------------------------------------------------------------->
-    <Body> <!-- Inicio da 'BODY'-->
-        <header> <!-- Inicio da "HEADER" -->
-            <h1>Neymar Jr.</h1> <!--Titulo principal-->
-        </header> <!-- Fim da "HEADER"-->
-        <!------------------------------------------------------------------------->
-        <section id="informacao"> 
-            <div id=texto> 
-                <h2>Nome: <span id='nome'> Neymar Jr.</span> </h2>
-                <h3>Situaçao: <span id="situacao">Feliz</span></h3>
-                <button value="primeiro" id="alterar">Alterar Situação</button>
-            </div>
+        <div id="fundo">
 
+            <section id="texto">
+                <h2 id="nome"><span id="emocao">Conheça a Riley e suas emoções:</span><span class="estado"> Normal</span></h2>
+            </section>
             <div id="img">
-                <img id="imagem" src="./assets/IMG/neymar_Feliz.jpg" alt=''>
+                <img class='imagem' width="435" src="./Assests/IMG/riley_normal.jpg" alt="hirr">
             </div>
 
-        </section> 
-        <script type="text/javascript" src='./assets/JS/script.js'></script>
-    </Body>
+            <div id="botoes">
+                <div id="Medo">
+                    <button class="medo"><img width="60" src="./Assests/IMG/emocao_medo.png" alt="Medo">
+                    </button>
+                </div>
+        
+                <div id="Raiva">
+                    <button class="raiva"><img width="78" src="./Assests/IMG/emocao_raiva.png" alt="Raiva">
+                    </button>
+                </div>
+        
+                <div id="Feliz">
+                    <button class="feliz"><img width="85" src="./Assests/IMG/emocao_alegria.png" alt="Felizidade">
+                    </button>
+                </div>
+        
+                <div id="Nojo">
+                    <button class="nojo"><img width="91" src="./Assests/IMG/emocao_nojo.png" alt="Nojo">
+                    </button>
+                </div>
+        
+                <div id="Triste">
+                    <button class="triste"><img width="83" src="./Assests/IMG/emocao_tristeza.png" alt="Triste">
+                    </button>
+                </div>
+    
+            </div>
+        </div>
+
+        <script type="text/javascript" src="./Assests/JS/script.js"></script>
+    </body>
+
 </html>

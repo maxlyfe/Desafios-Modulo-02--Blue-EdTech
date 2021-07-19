@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Amatic SC', sans-serif;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+    
+}
+
+body nav#banner{
+    background-image: url('../IMG/banner.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    height: 300px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+body div#fundo{
+    background-image: url(../IMG/fundo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+
+    height: 800px;
+    width: 100%;
+}
+
+body div#fundo section#texto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .2rem;
+    color: #fff;
+}
+body div#fundo section#texto h2{
+    padding: .1rem;
+    font-size: 3rem;
+    font-weight: 700;
+}
+body div#fundo div#img{
+    display: flex;
+    justify-content: center;
+    padding: .5rem;
+}
+body div#fundo div#botoes{
+    display: flex;
+    justify-content: center;
+    /* padding: 1.2rem; */
+    /* font-size: 5rem;
+    font-weight: 400; */
+    /* border-radius: 2rem; */
+    transition: all .5s ease-out;
+    cursor: pointer;
+}
+
+body div#fundo div#botoes div#botaoMedo{
+    display: block;
+    margin: 0;
+    padding: 0;
+    /* background-color: blueviolet;
+    border: 2px solid blueviolet; */
+}
+
+body div#fundo div#botoes div#botaoRaiva{
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+body div#fundo div#botoes div#botaoFeliz{
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+body div#fundo div#botoes div#botaoNojo{
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+body div#fundo div#botoes div#botaoTriste{
+    display: block;
+    margin: 0;
+    padding: 0;
+}
