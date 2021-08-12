@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/adm.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <title>Funko Pop Vinyl | Adm</title>
+</head>
+
+<!-- <header class = "header" id= "header">
+    <nav class="nav container">
+        <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+
+                <li class="nav__item">
+                    <a href="/" class="nav__link">.home </a>
+                </li>
+
+                <li class="nav__item">
+                    <a href="/catalog" class="nav__link">.catalog</a>
+                </li>
+
+                <li class="nav__item">
+                    <a href="/about" class="nav__link">.about</a>
+                </li>   
+            </ul>
+        </div>
+    </nav>
+
+</header> -->
+
+<body>
+
+    <input type="checkbox" id="check">
+    <label for="check">
+      <i class="fas fa-bars" id="btn"></i>
+      <i class="fas fa-times" id="cancel"></i>
+    </label>
+    <div class="sidebar">
+        <header>Funko Admin</header>
+        <ul>
+            <li><a href="/"><i class="uil uil-house-user"></i>.home</a></li>
+            <li><a href="/catalog"><i class="fas fa-qrcode"></i>.catalog</a></li>
+            <li><a href="/about"><i class="fas fa-stream"></i>.about</a></li>
+        </ul>
+    </div>
+
+
+    <article id="msg">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    </article>
+
+    
+    <section id='adm'>
+        <form action='/new' method="POST">
+        <h1>Cadastro | Funko</h1>
+
+            <label for="nome">Nome</label>
+            <input type="text" placeholder="Nome do Funko" id="nome" name="funkoName">
+
+            <label for="imagem">Imagem</label>
+            <input type="text" placeholder="Link da imagem" id="imagem" name="funkoImg">
+
+            <label for="link">Música</label>
+            <input type="text" placeholder="Link da música" id="musica" name="music">
+
+            <label for="descricao">Descrição</label>
+            <textarea name="description" id="descricao" cols="30" rows="10" placeholder="Insira a descrição">
+            </textarea>
+
+            <button type="submit">Enviar</button>            
+        </form>
+
+        <article id="lista">
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nome</th>
+                        <th>Imagem</th>
+                        <th>Música</th>
+                        <th>Descrição</th>
+                        <th style="text-align:center">Edição</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for funko in funkos %}
+                    <tr>
+                        <td>{{funko.id}}</td>
+                        <td>{{funko.funkoName}}</td>
+                        <td><a href="{{funko.imagem}}" target="_blank">{{funko.funkoImg}}</a></td>
+                        <td><a href="{{funko.music}}" target="_blank">{{funko.music}}</a></td>
+                        <td>{{funko.description}}</td>
+                        <td>
+                            <a class="editar" href="/edit/{{funko.id}}">Editar</a>
+                            <a href="/{{funko.id}}">Apagar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </article>
+
+      
+    {% if funko != undefined %}
+            
+
+            <div>
+                <form id="edit-form" action='/edit/{{funko.id}}' method="POST">
+                <h2>Editar | Funko</h2>
+                <!-- <hr>     -->
+            
+                        <label for="nome">Nome</label>
+                        <input type="text" placeholder="Nome do Funko" id="nome" name="funkoName" value='{{funko.funkoName}}'>
+                    
+                        <label for="imagem">Imagem</label>
+                        <input type="text" placeholder="Link da imagem" id="imagem" name="funkoImg" value='{{funko.funkoImg}}'>
+            
+                        <label for="musica">Música</label>
+                        <input type="text" placeholder="Link da música" id="musica" name="music" value='{{funko.music}}'>
+            
+                        <label for="descricao">Descrição</label>
+                        <textarea name="description" id="descricao" cols="30" rows="10" placeholder="Insira a descrição">{{funko.description}}</textarea>
+            
+                        <a type="button" class="btn btn-danger" href='/adm'>Cancelar</a>
+                        <button id=#btn-editar type="submit">Atualizar</button>              
+                </form>
+            </div>
+    {% endif %}
+
+    {% if funkoDelete != undefined %}
+        <section class="modal">
+            <div id="card"> 
+                <a href="/adm" id="fechar"><i class="fa fa-times" aria-hidden="true"></i></a>
+                <h2>Confirmação</h2>
+                <hr>
+
+                <p>Deseja realmente apagar o Funko: {{funkoDelete.nome}} </p>
+                <div id="btns">
+                <a class="btn-cancelar" id="close" href="/adm">Não</a>
+                <a class="btn-apagar" href="/delete/{{funkoDelete.id}}">Sim</a>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    <!-- <footer class="footer__container">
+
+        <div class="footer-right">
+
+            <a href="https://github.com/janicecaldeira/ProjetoFinal/tree/main" target="_blank"><i class="uil uil-github"></i></a>
+
+        </div>
+
+        <div class="footer-left">
+
+            <div class="footer-links">
+                <a href="/">.home</a>
+                <a href="/catalog">.catalog</a>
+                <a href="/about">.about</a>
+                <a href="/login">.admin</a>
+            </div>
+
+            <span>Grupo 2 &copy; 2021</span>
+        </div>
+
+    </footer> -->
+    <script src="../static/js/adm.js"></script>
+</body>
+
+</html>
